@@ -29,11 +29,11 @@ const selectors = {
   variantti: ".lunch-list",
 }
 
-// casper.thenOpen(urls.kanttiini);
-// casper.waitForSelector(selectors.kanttiini, function() {
-//   const html = this.getHTML(selectors.kanttiini, true);
-//   fs.write("./crawled/kanttiini.html", html, 'w');
-// });
+casper.thenOpen(urls.kanttiini);
+casper.waitForSelector(selectors.kanttiini, function() {
+  const html = this.getHTML(selectors.kanttiini, true);
+  fs.write("./crawled/kanttiini.html", html, 'w');
+});
 
 casper.start(urls.variantti);
 casper.waitForSelector(selectors.variantti, function() {
