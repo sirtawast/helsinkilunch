@@ -36,26 +36,25 @@ const selectors = {
 casper.start(urls.kanttiini);
 casper.waitForSelector(selectors.kanttiini, function() {
   const html = this.getHTML(selectors.kanttiini, true);
-  fs.write("./crawled/kanttiini.html", html, 'w');
+  fs.write("./static/crawled/kanttiini.html", html, 'w');
 });
 
 casper.thenOpen(urls.variantti);
 casper.waitForSelector(selectors.variantti, function() {
   const html = this.getHTML(selectors.variantti, true);
-  fs.write("./crawled/variantti.html", html, 'w');
+  fs.write("./static/crawled/variantti.html", html, 'w');
 });
 
 // casper.thenOpen(urls.blancco);
 // casper.waitForSelector(selectors.blancco, function() {
 //   const html = this.getHTML(selectors.blancco, true);
-//   fs.write("./crawled/blancco.html", html, 'w');
+//   fs.write("./static/crawled/blancco.html", html, 'w');
 // });
 
 casper.thenOpen(urls.taste);
 casper.waitForSelector(selectors.taste, function() {
   var elements = this.getElementsInfo('table');
-  var element = elements[1];
-  fs.write("./crawled/taste.html", element.html, 'w');
+  fs.write("./static/crawled/taste.html", elements[0].html + elements[1].html, 'w');
 });
 
 casper.run();

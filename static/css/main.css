@@ -1,0 +1,23 @@
+body {
+  text-align: left;
+}
+
+.siteorigin-widget-tinymce * {
+  text-align: left !important;
+}
+
+.siteorigin-widget-tinymce p {
+  margin: 0;
+}
+
+.lunch-list p {
+  margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-size: 24px !important;
+}
+
+.lunch-list h3 {
+  font-size: 18px;
+}
