@@ -1,0 +1,23 @@
+{
+  "name": "pitskulounas",
+  "version": "1.0.0",
+  "description": "Crawl stuff from Pitäjänkäki lounch places and serve them from API",
+  "main": "fetch-sites.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sampohaavisto/pitskulounas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sampohaavisto/pitskulounas/issues"
+  },
+  "homepage": "https://github.com/sampohaavisto/pitskulounas#readme",
+  "devDependencies": {
+    "casperjs": "^1.1.3",
+    "phantomjs": "^2.1.7"
+  }
+}
