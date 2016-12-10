@@ -34,16 +34,16 @@ const selectors = {
 
 // TODO: Make a map and loop these to keep DRY
 casper.start(urls.kanttiini);
-// casper.waitForSelector(selectors.kanttiini, function() {
-//   const html = this.getHTML(selectors.kanttiini, true);
-//   fs.write("./crawled/kanttiini.html", html, 'w');
-// });
+casper.waitForSelector(selectors.kanttiini, function() {
+  const html = this.getHTML(selectors.kanttiini, true);
+  fs.write("./crawled/kanttiini.html", html, 'w');
+});
 
-// casper.thenOpen(urls.variantti);
-// casper.waitForSelector(selectors.variantti, function() {
-//   const html = this.getHTML(selectors.variantti, true);
-//   fs.write("./crawled/variantti.html", html, 'w');
-// });
+casper.thenOpen(urls.variantti);
+casper.waitForSelector(selectors.variantti, function() {
+  const html = this.getHTML(selectors.variantti, true);
+  fs.write("./crawled/variantti.html", html, 'w');
+});
 
 // casper.thenOpen(urls.blancco);
 // casper.waitForSelector(selectors.blancco, function() {
