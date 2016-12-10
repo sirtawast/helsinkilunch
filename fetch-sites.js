@@ -7,7 +7,7 @@ casper.start('http://www.smarteat.fi/menu-pitskun-kanttiini/');
 
 casper.waitForSelector(selectorKanttiini, function() {
   const html = this.getHTML(selectorKanttiini, true);
-  fs.write("kanttiini.html", html, 'w');
+  fs.write("./crawled/kanttiini.html", html, 'w');
 });
 
 casper.run();
