@@ -10,7 +10,7 @@ var urls = {
 
 var date = new Date();
 var yyyy = new Date().getFullYear();
-var mm = new Date().getMonth().toString();;
+var mm = String(parseInt(new Date().getMonth(), 10) + 1);
 var dd = new Date().getDate().toString();
 
 if (mm.length < 1) {
