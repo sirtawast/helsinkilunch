@@ -15,10 +15,10 @@ $(document).ready(() => {
       url: `/crawled/${r}.html`,
       type: 'get',
     }).done((res) => {
-      $(`#${r}`).html(res);
+      $(`#${r}`).html(`<div class="float-sm-left">${res}</div`);
 
       var number = Math.floor(Math.random()*(10-1+1)+1);
-      $(`#${r}`).prepend(`<img style="float:right;" src="http://lorempixel.com/200/200/food/${number}/">`)
+      $(`#${r}`).append(`<img class="float-sm-right" src="http://lorempixel.com/200/200/food/${number}/">`)
 
       days.forEach((o) => {
   		  var re = new RegExp(o.name, "gi");
@@ -26,6 +26,6 @@ $(document).ready(() => {
       });
     });
   })
-  
+
 
 });
