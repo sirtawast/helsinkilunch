@@ -1,4 +1,10 @@
-var casper = require('casper').create();
+var casper = require('casper').create({
+  pageSettings: {
+    loadImages:  false,
+    loadPlugins: false,
+  }
+});
+
 var fs = require('fs');
 
 var urls = {
@@ -30,7 +36,7 @@ const selectors = {
   kanttiini: ".siteorigin-widget-tinymce.textwidget",
   variantti: ".lunch-list",
   taste: "h1",
-  factory: '.post_content',
+  factory: '.post_content .col-xs-12',
 }
 
 // TODO: Make a map and loop these to keep DRY
@@ -81,7 +87,10 @@ var replaceAllTags = function(html) {
   var spanClose = "</span>";
 
   return html = html
-    .replace(/<h1>/gi, '').replace(/<\/h1>/gi, '')
+    .replace(/class\=/gi, 'removed\=')
+    .replace(/style\=/gi, 'removed\=')
+    //.replace(/<br(\s+)?(\/)?(\s+)?>/gi, '')
+    .replace(/<h1/gi, divOpen).replace(/<\/h1>/gi, '')
     .replace(/<h2/gi, divOpen).replace(/<\/h2>/gi, divClose)
     .replace(/<h3/gi, divOpen).replace(/<\/h3>/gi, divClose)
     .replace(/<h4/gi, divOpen).replace(/<\/h4>/gi, divClose)
@@ -96,7 +105,7 @@ var replaceAllTags = function(html) {
     .replace(/<table/gi, divOpen).replace(/<\/table>/gi, divClose)
     .replace(/<tbody/gi, divOpen).replace(/<\/tbody>/gi, divClose)
     .replace(/<tfoot/gi, divOpen).replace(/<\/tfoot>/gi, divClose)
-    .replace(/<b/gi, spanOpen).replace(/<\/b>/gi, spanClose)
+    .replace(/<b>/gi, spanOpen+">").replace(/<\/b>/gi, spanClose)
     .replace(/<i/gi, spanOpen).replace(/<\/i>/gi, spanClose)
     .replace(/<strong/gi, spanOpen).replace(/<\/strong>/gi, spanClose)
     .replace(/<em/gi, spanOpen).replace(/<\/em>/gi, spanClose)

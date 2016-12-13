@@ -10,14 +10,15 @@ $(document).ready(() => {
   	{name: "Perjantai"},
   ]
 
-  restaurants.forEach((o) => {
+  restaurants.forEach((r) => {
     $.ajax({
-      url: `/crawled/${o}.html`,
+      url: `/crawled/${r}.html`,
       type: 'get',
     }).done((res) => {
-      $(`#${o}`).html(res);
+      $(`#${r}`).html(res);
 
-      http://lorempixel.com/400/200/food/10/
+      var number = Math.floor(Math.random()*(10-1+1)+1);
+      $(`#${r}`).prepend(`<img style="float:right;" src="http://lorempixel.com/200/200/food/${number}/">`)
 
       days.forEach((o) => {
   		  var re = new RegExp(o.name, "gi");
@@ -25,6 +26,6 @@ $(document).ready(() => {
       });
     });
   })
-
+  
 
 });
