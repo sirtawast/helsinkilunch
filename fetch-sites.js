@@ -68,7 +68,7 @@ casper.waitForSelector(selectors.factory, function() {
   this.echo('Factory OK');
 });
 
-casper.start(urls.taste);
+casper.thenOpen(urls.taste);
 casper.waitForSelector(selectors.taste, function() {
   var elements = this.getElementsInfo('table');
   fs.write("./static/crawled/taste.html", replaceAllTags(elements[0].html) + replaceAllTags(elements[1].html), 'w');
@@ -76,7 +76,7 @@ casper.waitForSelector(selectors.taste, function() {
 });
 
 casper.run(function(){
-  this.echo('Crawling done!');
+  this.echo('Crawling done!').exit();
 });
 
 var replaceAllTags = function(html) {
