@@ -40,33 +40,33 @@ const selectors = {
 }
 
 // TODO: Make a map and loop these to keep DRY
-// casper.start(urls.kanttiini);
-// casper.waitForSelector(selectors.kanttiini, function() {
-//   const html = this.getHTML(selectors.kanttiini, true);
-//   fs.write("./static/crawled/kanttiini.html", replaceAllTags(html), 'w');
-//   this.echo('Kanttiini OK');
-// });
+casper.start(urls.kanttiini);
+casper.waitForSelector(selectors.kanttiini, function() {
+  const html = this.getHTML(selectors.kanttiini, true);
+  fs.write("./static/crawled/kanttiini.html", replaceAllTags(html), 'w');
+  this.echo('Kanttiini OK');
+});
 
-// casper.thenOpen(urls.variantti);
-// casper.waitForSelector(selectors.variantti, function() {
-//   const html = this.getHTML(selectors.variantti, true);
-//   fs.write("./static/crawled/variantti.html", replaceAllTags(html), 'w');
-//   this.echo('Variantti OK');
-// });
+casper.thenOpen(urls.variantti);
+casper.waitForSelector(selectors.variantti, function() {
+  const html = this.getHTML(selectors.variantti, true);
+  fs.write("./static/crawled/variantti.html", replaceAllTags(html), 'w');
+  this.echo('Variantti OK');
+});
 
-// casper.thenOpen(urls.blancco);
-// casper.waitForSelector(selectors.blancco, function() {
-//   const html = this.getHTML(selectors.blancco, true);
-//   fs.write("./static/crawled/blancco.html", replaceAllTags(html), 'w');
-//   this.echo('Blancco OK');
-// });
+casper.thenOpen(urls.blancco);
+casper.waitForSelector(selectors.blancco, function() {
+  const html = this.getHTML(selectors.blancco, true);
+  fs.write("./static/crawled/blancco.html", replaceAllTags(html), 'w');
+  this.echo('Blancco OK');
+});
 
-// casper.thenOpen(urls.factory);
-// casper.waitForSelector(selectors.factory, function() {
-//   const html = this.getHTML(selectors.factory, true);
-//   fs.write("./static/crawled/factory.html", replaceAllTags(html), 'w');
-//   this.echo('Factory OK');
-// });
+casper.thenOpen(urls.factory);
+casper.waitForSelector(selectors.factory, function() {
+  const html = this.getHTML(selectors.factory, true);
+  fs.write("./static/crawled/factory.html", replaceAllTags(html), 'w');
+  this.echo('Factory OK');
+});
 
 casper.start(urls.taste);
 casper.waitForSelector(selectors.taste, function() {
