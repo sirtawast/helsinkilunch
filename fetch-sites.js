@@ -6,6 +6,7 @@ var casper = require('casper').create({
 });
 
 var fs = require('fs');
+var cwd = fs.workingDirectory;
 
 var urls = {
   kanttiini: "http://www.smarteat.fi/menu-pitskun-kanttiini/",
@@ -43,35 +44,35 @@ const selectors = {
 casper.start(urls.kanttiini);
 casper.waitForSelector(selectors.kanttiini, function() {
   const html = this.getHTML(selectors.kanttiini, true);
-  fs.write("./static/crawled/kanttiini.html", replaceAllTags(html), 'w');
+  fs.write(cwd + "/static/crawled/kanttiini.html", replaceAllTags(html), 'w');
   this.echo('Kanttiini OK');
 });
 
 casper.thenOpen(urls.variantti);
 casper.waitForSelector(selectors.variantti, function() {
   const html = this.getHTML(selectors.variantti, true);
-  fs.write("./static/crawled/variantti.html", replaceAllTags(html), 'w');
+  fs.write(cwd + "/static/crawled/variantti.html", replaceAllTags(html), 'w');
   this.echo('Variantti OK');
 });
 
 casper.thenOpen(urls.blancco);
 casper.waitForSelector(selectors.blancco, function() {
   const html = this.getHTML(selectors.blancco, true);
-  fs.write("./static/crawled/blancco.html", replaceAllTags(html), 'w');
+  fs.write(cwd + "/static/crawled/blancco.html", replaceAllTags(html), 'w');
   this.echo('Blancco OK');
 });
 
 casper.thenOpen(urls.factory);
 casper.waitForSelector(selectors.factory, function() {
   const html = this.getHTML(selectors.factory, true);
-  fs.write("./static/crawled/factory.html", replaceAllTags(html), 'w');
+  fs.write(cwd + "/static/crawled/factory.html", replaceAllTags(html), 'w');
   this.echo('Factory OK');
 });
 
 casper.thenOpen(urls.taste);
 casper.waitForSelector(selectors.taste, function() {
   var elements = this.getElementsInfo('table');
-  fs.write("./static/crawled/taste.html", replaceAllTags(elements[0].html) + replaceAllTags(elements[1].html), 'w');
+  fs.write(cwd + "/static/crawled/taste.html", replaceAllTags(elements[0].html) + replaceAllTags(elements[1].html), 'w');
   this.echo('Taste OK');
 });
 
