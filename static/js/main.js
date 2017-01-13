@@ -1,5 +1,11 @@
-$(document).ready(() => {
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then((registration) => {
+      console.log("KAIKKI OK!!!!", registration)
+    }).catch(console.error)
+}
 
+$(document).ready(() => {
   const restaurants = ['taste','valimotie9', 'variantti', 'kanttiini', 'blancco', 'factory']
 
   const days = [
@@ -11,10 +17,9 @@ $(document).ready(() => {
   ]
 
   restaurants.forEach((r) => {
-    $.ajax({
-      url: `/crawled/${r}.html`,
+    fetch(`/crawled/${r}.html`, {
       type: 'get',
-    }).done((res) => {
+    }).then((res) => res.text()).then((res) => {
       $(`#${r}`).html(`<div class="float-sm-left">${res}</div`);
       const number = Math.floor(Math.random()*(10-1+1)+1);
       $(`#${r}`).append(`<img class="float-sm-right" src="http://lorempixel.com/200/200/food/${number}/">`)
@@ -28,6 +33,4 @@ $(document).ready(() => {
     });
 
   })
-
-
 });
