@@ -8,9 +8,8 @@ Very quick hack at the moment.
 
 # How to use
 
-Install node 6, clone repo.
+Install node >= 6, clone repo.
 ```
 $ npm install
-$ casperjs fetch-sites.js # Schedule this weekly / daily ...
-$ # serve static/ with a static server
+$ npm start
 ```
