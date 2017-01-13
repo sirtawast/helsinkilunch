@@ -4,7 +4,7 @@
   "description": "Crawl stuff from Pitäjänkäki lounch places and serve them from API",
   "main": "fetch-sites.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "./node_modules/.bin/casperjs fetch-sites.js; node index.js;",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
