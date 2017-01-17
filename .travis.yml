@@ -1,0 +1,16 @@
+language: node_js
+dist: trusty
+node_js: '6'
+sudo: required
+install:
+- sudo apt-get install screen
+- npm install -g selenium-standalone
+- npm install -g phantomjs-prebuilt
+- npm install -g nightwatch
+- npm install
+- selenium-standalone install
+before_script:
+- screen -dm selenium-standalone start
+- screen -dm npm start
+script:
+- curl -I http://localhost:3000/
