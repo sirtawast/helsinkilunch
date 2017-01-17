@@ -9,6 +9,8 @@ var restaurants = mapping.restaurants;
 var cwd = fs.workingDirectory;
 
 var casper = require('casper').create({
+  // verbose: process.env.development,
+  // logLevel: 'debug',
   pageSettings: {
     loadImages:  false,
     loadPlugins: false,
@@ -28,12 +30,12 @@ casper.start().eachThen(urls, function(url) {
     var slug = restaurants[i].slug;
     this.echo("Fetching " + slug + " using '" + selector +"'");
     this.waitForSelector(selector, function() {
-      var html = this.getHTML(selector, true);
       if (slug === 'taste' || slug === "valimotie9") {
         var elements = this.getElementsInfo('table');
-        fs.write(cwd+"/static/crawled/" + slug + ".html", utils.replaceAllTags(elements[0].html) + utils.replaceAllTags(elements[1].html), 'w');
+        fs.write(cwd+"/static/crawled/" + slug + ".html", utils.removeEmptyDivs(utils.replaceAllTags(elements[0].html)) + utils.removeEmptyDivs(utils.replaceAllTags(elements[1].html)), 'w');
       } else {
-        fs.write(cwd+"/static/crawled/" + slug + ".html", utils.replaceAllTags(html), 'w');
+        var html = utils.replaceAllTags(this.getHTML(selector, true));
+        fs.write(cwd+"/static/crawled/" + slug + ".html", utils.removeEmptyDivs(html), 'w');
       }
       this.echo('OK');
       i++;

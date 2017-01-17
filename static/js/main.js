@@ -1,12 +1,12 @@
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js')
     .then((registration) => {
-      console.log("KAIKKI OK!!!!", registration)
-    }).catch(console.error)
+      // Registration OK!
+    }).catch(console.error);
 }
 
 $(document).ready(() => {
-  const restaurants = ['taste','valimotie9', 'variantti', 'kanttiini', 'blancco', 'factory']
+  const restaurants = ['taste', 'valimotie9', 'variantti', 'kanttiini', 'blancco', 'factory']
 
   const days = [
   	{name: "Maanantai"},
