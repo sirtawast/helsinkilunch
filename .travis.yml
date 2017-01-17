@@ -12,5 +12,6 @@ install:
 before_script:
 - screen -dm selenium-standalone start
 - screen -dm npm start
+- sleep 60
 script:
 - curl -I http://localhost:3000/
