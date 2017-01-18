@@ -5,8 +5,13 @@ if (navigator && navigator.serviceWorker) {
     }).catch(console.error)
 }
 
+let ASSET_ROOT = "";
+if (window.location.hostname === "sampohaavisto.github.io") {
+  ASSET_ROOT = "https://cdn.rawgit.com/sampohaavisto/pitskulounas/gh-pages";
+}
+
 $(document).ready(() => {
-  const restaurants = ['taste','valimotie9', 'variantti', 'kanttiini', 'blancco', 'factory']
+  const restaurants = ['taste','valimotie9', 'variantti', 'kanttiini', 'blancco', 'factory'];
 
   const days = [
   	{name: "Maanantai"},
@@ -17,7 +22,7 @@ $(document).ready(() => {
   ]
 
   restaurants.forEach((r) => {
-    fetch(`/crawled/${r}.html`, {
+    fetch(`${ASSET_ROOT}/crawled/${r}.html`, {
       type: 'get',
     }).then((res) => res.text()).then((res) => {
       $(`#${r}`).html(`<div class="float-sm-left">${res}</div`);
