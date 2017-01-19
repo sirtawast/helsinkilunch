@@ -17,9 +17,8 @@ script:
 - curl -I http://localhost:3000/
 before_deploy:
   - mv static/crawled/ /tmp/crawled/
-  - openssl des3 -d -in pitskulounas.crypted -out /tmp/pitskulounas.key -k $PRIVATE_KEY_PASSWORD;
-  - ssh-add /tmp/pitskulounas.key
-  - git checkout gh-pages
+  - openssl des3 -d -in pitskulounas.crypted -out /tmp/deploy_key -k $PRIVATE_KEY_PASSWORD;
+  - chmod 0600 /tmp/deploy_key
 deploy: 
   skip_cleanup: true
   provider: script
@@ -27,4 +26,4 @@ deploy:
   on:
     branch: master
 after_deploy:
-  - shred /tmp/pitskulounas.key
+  - shred /tmp/deploy_key
