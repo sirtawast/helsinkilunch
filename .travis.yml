@@ -3,7 +3,7 @@ dist: trusty
 node_js: '6'
 sudo: required
 install:
-- sudo apt-get install screen
+- sudo apt-get install git screen
 - npm install -g selenium-standalone
 - npm install -g phantomjs-prebuilt
 - npm install -g nightwatch
@@ -15,3 +15,16 @@ before_script:
 - sleep 60
 script:
 - curl -I http://localhost:3000/
+before_deploy:
+  - mv static/crawled/ /tmp/crawled/
+  - openssl des3 -d -in pitskulounas.crypted -out /tmp/pitskulounas.key -k $PRIVATE_KEY_PASSWORD;
+  - ssh-add /tmp/pitskulounas.key
+  - git checkout gh-pages
+deploy: 
+  skip_cleanup: true
+  provider: script
+  script: travis_deploy.sh
+  on:
+    branch: master
+after_deploy:
+  - shred /tmp/pitskulounas.key
