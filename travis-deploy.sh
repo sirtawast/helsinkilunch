@@ -13,7 +13,7 @@ git config user.name "Travis CI"
 git config user.email "spook@example.com"
 
 REPOSITORY=`git config remote.origin.url`
-GITHUB_LINK=${REPO/https:\/\/github.com\//git@github.com:}
+GITHUB_LINK=${REPOSITORY/https:\/\/github.com\//git@github.com:}
 COMMIT_SHA=`git rev-parse --verify HEAD`
 
 git checkout gh-pages
