@@ -6,11 +6,9 @@ if [[ "$TRAVIS_BRANCH" != master ]]; then
   exit 0
 fi
 
-eval `ssh-agent -s`
-ssh-add /tmp/deploy_key
-
 git config user.name "Travis CI"
 git config user.email "spook@example.com"
+git config --global push.default simple
 
 REPOSITORY=`git config remote.origin.url`
 GITHUB_LINK=${REPOSITORY/https:\/\/github.com\//git@github.com:}
@@ -21,5 +19,5 @@ git stash
 mv /tmp/crawled/ crawled/
 
 git add .
-git commit -m "[Travis] Update crawled files"
+git commit -m "[Travis] Update crawled files (${SHA})"
 git push $GITHUB_LINK gh-pages

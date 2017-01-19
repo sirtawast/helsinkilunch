@@ -19,6 +19,8 @@ before_deploy:
   - mv static/crawled/ /tmp/crawled/
   - openssl des3 -d -in pitskulounas.crypted -out /tmp/deploy_key -k $PRIVATE_KEY_PASSWORD;
   - chmod 0600 /tmp/deploy_key
+  - eval `ssh-agent -s`
+  - ssh-add /tmp/deploy_key
 deploy: 
   skip_cleanup: true
   provider: script
