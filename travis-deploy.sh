@@ -1,5 +1,4 @@
 #!/bin/sh
-set -e
 
 if [[ "$TRAVIS_BRANCH" != master ]]; then
   echo "Not building on 'master' so not deploying"
@@ -17,6 +16,8 @@ COMMIT_SHA=`git rev-parse --verify HEAD`
 git stash
 git checkout gh-pages
 git stash
+
+rm -Rf crawled/
 mv /tmp/crawled/ crawled/
 
 git add .
