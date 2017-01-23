@@ -21,10 +21,11 @@ before_deploy:
   - chmod 0600 /tmp/deploy_key
   - eval `ssh-agent -s`
   - ssh-add /tmp/deploy_key
+  - cat deploy.sh
 deploy: 
   skip_cleanup: true
   provider: script
-  script: travis_deploy.sh
+  script: deploy.sh
   on:
     branch: master
 after_deploy:
