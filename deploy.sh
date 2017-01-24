@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "$TRAVIS_BRANCH" != master ]; then
   echo "Not building on 'master' so not deploying"
