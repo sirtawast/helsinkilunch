@@ -8,6 +8,7 @@ fi
 git config user.name "TravisCI"
 git config user.email "spook@example.com"
 git config --global push.default simple
+git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
 
 REPOSITORY=`git config remote.origin.url`
 GITHUB_LINK=${REPOSITORY/https:\/\/github.com\//git@github.com:}
@@ -16,7 +17,7 @@ COMMIT_SHA=`git rev-parse --verify HEAD`
 git fetch origin
 git reset --hard origin/master
 git fetch --all
-git checkout gh-pages
+git checkout -b gh-pages --track origin/gh-pages
 
 rm -Rf crawled/
 mv /tmp/crawled/ crawled/
