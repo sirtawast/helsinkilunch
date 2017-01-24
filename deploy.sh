@@ -5,7 +5,7 @@ if [ "$TRAVIS_BRANCH" != master ]; then
   exit 0
 fi
 
-git config user.name "Travis CI"
+git config user.name "TravisCI"
 git config user.email "spook@example.com"
 git config --global push.default simple
 
@@ -13,9 +13,8 @@ REPOSITORY=`git config remote.origin.url`
 GITHUB_LINK=${REPOSITORY/https:\/\/github.com\//git@github.com:}
 COMMIT_SHA=`git rev-parse --verify HEAD`
 
-git stash
+git fetch --all
 git checkout gh-pages
-git stash
 
 rm -Rf crawled/
 mv /tmp/crawled/ crawled/
