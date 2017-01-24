@@ -13,6 +13,8 @@ REPOSITORY=`git config remote.origin.url`
 GITHUB_LINK=${REPOSITORY/https:\/\/github.com\//git@github.com:}
 COMMIT_SHA=`git rev-parse --verify HEAD`
 
+git fetch origin
+git reset --hard origin/master
 git fetch --all
 git checkout gh-pages
 
