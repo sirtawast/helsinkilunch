@@ -19,8 +19,8 @@ git reset --hard origin/master
 git fetch --all
 git checkout -b gh-pages --track origin/gh-pages
 
-rsync -auvP /tmp/crawled/* crawled/ 
-rsync -auvP /tmp/static/* ./
+rsync -avP /tmp/crawled/* crawled/ 
+rsync -avP /tmp/static/* ./
 
 git add .
 git commit -m "[Travis] Update crawled files (${COMMIT_SHA})"
