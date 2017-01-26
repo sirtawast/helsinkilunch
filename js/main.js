@@ -17,7 +17,7 @@ $(document).ready(() => {
   ]
 
   restaurants.forEach((r) => {
-    fetch(`/pitskulounas/crawled/${r}.html`, {
+    fetch(`/crawled/${r}.html`, {
       type: 'get',
     }).then((res) => res.text()).then((res) => {
       $(`#${r}`).html(`<div class="float-sm-left">${res}</div`);
