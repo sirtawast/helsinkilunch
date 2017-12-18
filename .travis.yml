@@ -14,7 +14,7 @@ before_script:
 - screen -dm npm start
 - sleep 60
 script:
-- curl -If http://localhost:3000/
+- ./bin/test.sh
 before_deploy:
   - mv static/crawled/ /tmp/crawled/
   - mv static/ /tmp/static/
@@ -26,7 +26,7 @@ before_deploy:
 deploy: 
   skip_cleanup: true
   provider: script
-  script: ./deploy.sh
+  script: ./bin/deploy.sh
   on:
     branch: master
 after_deploy:
