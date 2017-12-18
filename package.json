@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sampohaavisto/pitskulounas.git"
+    "url": "git+https://github.com/sirtawast/pitskulounas.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sampohaavisto/pitskulounas/issues"
+    "url": "https://github.com/sirtawast/pitskulounas/issues"
   },
-  "homepage": "https://github.com/sampohaavisto/pitskulounas#readme",
+  "homepage": "https://github.com/sirtawast/pitskulounas#readme",
   "dependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.22.1",
