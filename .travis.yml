@@ -7,7 +7,7 @@ install:
 - npm install -g phantomjs-prebuilt
 - npm install
 before_script:
-- screen -dm npm run crawl
+- npm run crawl
 script:
 - ./bin/test.sh
 before_deploy:
