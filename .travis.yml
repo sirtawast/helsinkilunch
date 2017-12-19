@@ -11,8 +11,8 @@ before_script:
 script:
 - ./bin/test.sh
 before_deploy:
-  - mv static/crawled/ /tmp/crawled/
-  - mv static/ /tmp/static/
+  - npm run build
+  - mv dist/ /tmp/dist/
   - openssl des3 -d -in pitskulounas.crypted -out /tmp/deploy_key -k $PRIVATE_KEY_PASSWORD;
   - chmod 0600 /tmp/deploy_key
   - eval `ssh-agent -s`
