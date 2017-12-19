@@ -2,7 +2,7 @@
   <div class="hello">
     <div v-for="(r, index) in menus">
       <h1>{{ r.name }}</h1>
-      <div v-html="r.html">r</div>
+      <div v-html="r.html"></div>
     </div>
   </div>
 </template>
