@@ -31,9 +31,9 @@ casper.start().eachThen(urls, function(url) {
       var html = this.getHTML(selector, true);
       if (slug === 'taste' || slug === "valimotie9") {
         var elements = this.getElementsInfo('table');
-        fs.write(cwd+"/static/crawled/" + slug + ".html", utils.replaceAllTags(elements[0].html) + utils.replaceAllTags(elements[1].html), 'w');
+        fs.write(cwd+"/static/crawled/" + slug + ".json", JSON.stringify({html: utils.replaceAllTags(elements[0].html) + utils.replaceAllTags(elements[1].html)}), 'w');
       } else {
-        fs.write(cwd+"/static/crawled/" + slug + ".html", utils.replaceAllTags(html), 'w');
+        fs.write(cwd+"/static/crawled/" + slug + ".json", JSON.stringify({html: utils.replaceAllTags(html)}), 'w');
       }
       this.echo('OK');
       i++;

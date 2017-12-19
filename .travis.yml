@@ -4,15 +4,10 @@ node_js: '6'
 sudo: required
 install:
 - sudo apt-get install git screen
-- npm install -g selenium-standalone
 - npm install -g phantomjs-prebuilt
-- npm install -g nightwatch
 - npm install
-- selenium-standalone install
 before_script:
-- screen -dm selenium-standalone start
-- screen -dm npm start
-- sleep 60
+- npm run crawl
 script:
 - ./bin/test.sh
 before_deploy:
