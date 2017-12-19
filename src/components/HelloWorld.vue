@@ -1,14 +1,30 @@
 <template>
   <div class="hello">
+    <div v-for="(r, index) in menus">
+      <h1>{{ r.name }}</h1>
+      <div v-html="r.html">r</div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  data () {
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      menus: [],
+      restaurants: ['taste','valimotie9', 'variantti', 'kanttiini', 'blancco', 'factory'],
+    }
+  },
+  beforeMount(){
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      this.restaurants.forEach((r) => {
+        this.$http.get(`/static/crawled/${r}.json`).then((res) => {
+          this.menus.push({html: res.data.html, name: r});
+        });
+      });
     }
   }
 }

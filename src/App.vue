@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <div v-for="r in restaurants">
-      <h1>{{ r }}</h1>
-      <div v-html="menus[r]"></div>
-    </div>
     <router-view/>
   </div>
 </template>
@@ -13,29 +9,6 @@ import Vue from '@/main';
 
 export default {
   name: 'app',
-  data() {
-    return {
-      menus: [],
-      restaurants: ['taste','valimotie9', 'variantti', 'kanttiini', 'blancco', 'factory'],
-    }
-  },
-  beforeMount(){
-    this.fetchData();
-  },
-  methods: {
-    fetchData() {
-      this.restaurants.forEach((r) => {
-
-        this.$http.get(`/static/crawled/${r}.json`).then((res) => {
-          this.menus[r] = res.data.html;
-          console.log(r, this.menus);
-
-       });
-      })
-
-
-    }
-  }
 }
 </script>
 
