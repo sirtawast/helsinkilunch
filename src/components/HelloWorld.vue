@@ -21,7 +21,13 @@ export default {
   methods: {
     fetchData() {
       this.restaurants.forEach((r) => {
-        this.$http.get(`/static/crawled/${r}.json`).then((res) => {
+        let path = "/";
+        
+        if (process.env.NODE_ENV === 'production') {
+          path = "/pitskulounas";
+        }
+
+        this.$http.get(`${path}static/crawled/${r}.json`).then((res) => {
           this.menus.push({html: res.data.html, name: r});
         });
       });
