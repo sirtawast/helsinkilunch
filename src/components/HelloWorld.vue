@@ -22,9 +22,9 @@ export default {
     fetchData() {
       this.restaurants.forEach((r) => {
         let path = "/";
-        
+
         if (process.env.NODE_ENV === 'production') {
-          path = "/pitskulounas";
+          path = "/pitskulounas/";
         }
 
         this.$http.get(`${path}static/crawled/${r}.json`).then((res) => {
