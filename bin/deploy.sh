@@ -23,5 +23,7 @@ rsync -aP /tmp/dist/ ./
 rsync -aP /tmp/crawled/ ./static/crawled/
 
 git add .
+git add --force ./static/crawled
+
 git commit -m "[Travis] Update crawled files (${COMMIT_SHA})"
 git push $GITHUB_LINK gh-pages
