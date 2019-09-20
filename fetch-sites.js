@@ -29,7 +29,7 @@ casper.start().eachThen(urls, function(url) {
     this.echo("Fetching " + slug + " using '" + selector +"'");
     this.waitForSelector(selector, function() {
       var html = this.getHTML(selector, true);
-      if (slug === 'taste' || slug === "valimotie9") {
+      if (slug === 'taste') {
         var elements = this.getElementsInfo('table');
         fs.write(cwd+"/static/crawled/" + slug + ".json", JSON.stringify({html: utils.replaceAllTags(elements[0].html) + utils.replaceAllTags(elements[1].html)}), 'w');
       } else {

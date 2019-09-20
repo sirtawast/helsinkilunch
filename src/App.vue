@@ -6,6 +6,9 @@
 
 <script>
 import Vue from '@/main';
+import styles from './assets/flexbox.css'
+import normalize from './assets/normalize.css'
+
 
 export default {
   name: 'app',
@@ -14,10 +17,11 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	max-width: 1600px;
+margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin: 40px;
 }
+
 </style>

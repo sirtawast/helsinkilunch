@@ -1,9 +1,13 @@
 <template>
-  <div class="hello">
-    <div v-for="(r, index) in menus">
-      <h1>{{ r.name }}</h1>
-      <div v-html="r.html"></div>
+  <div class="container-fluid">
+    <div class="row">
+    <div v-for="(r, index) in menus" class="col-12 col-md-6 col-lg-4">
+      <div>
+        <h1>{{ r.name }}</h1>
+        <div v-html="r.html"></div>
+      </div>
     </div>
+  </div>
   </div>
 </template>
 
