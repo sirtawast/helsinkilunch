@@ -10,7 +10,7 @@ Kaikki lempiravintolasi lounaslistat Pitäjänmäeltä.
 
 Very quick hack at the moment.
 
-[Demo](https://sirtawast.github.io/pitskulounas)
+[Syömään / Let's eat!](https://sirtawast.github.io/pitskulounas)
 
 # How to use
 
