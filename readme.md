@@ -6,7 +6,7 @@ _**PITÄJÄNMÄKI – THE CULINARY EXPERIENCE**_
 
 ---
 
-All your favourite Pitäjänmäki restaurants in one place.
+Kaikki lempiravintolasi lounaslistat Pitäjänmäeltä.
 
 Very quick hack at the moment.
 
