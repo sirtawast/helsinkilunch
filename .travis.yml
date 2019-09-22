@@ -7,8 +7,8 @@ install:
 - npm install -g phantomjs-prebuilt
 - npm install
 before_script:
-- node ./vallila.js
 - npm run crawl
+- node ./vallila.js
 script:
 - ./bin/test.sh
 before_deploy:
