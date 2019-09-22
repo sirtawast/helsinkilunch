@@ -14,7 +14,7 @@ Palvelu pitäisi mergata sisarensa kanssa. https://github.com/sirtawast/helsinki
 
 [Syömään Pitskussa / Let's eat @Pitsku!](https://sirtawast.github.io/pitskulounas)
 
-[Syömään Vallilassa / Let's eat @Vallila!](https://sirtawast.github.io/pitskulounas)
+[Syömään Vallilassa / Let's eat @Vallila!](https://sirtawast.github.io/pitskulounas/#/vallila)
 
 ---
 
