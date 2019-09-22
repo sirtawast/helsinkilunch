@@ -5,7 +5,7 @@
 _**PITÄJÄNMÄKI AND VALLILA – THE CULINARY EXPERIENCE**_
 
 
-Kaikki lempiravintolasi lounaslistat Pitäjänmäeltä.
+Kaikki lempiravintolasi lounaslistat Pitäjänmäellä ja Vallilassa.
 
 Very quick hack. Copy some restaurant menus and paste as HTML for one long list of lunch menus.
 
