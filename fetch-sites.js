@@ -15,13 +15,16 @@ var casper = require('casper').create({
   }
 });
 
+casper.on('error', function(msg) {
+  this.echo(msg);
+  return true;
+});
+
 var sodexoParams = fecha.format(new Date(), "YYYY/MM/DD");
 restaurants[4].url = "http://www.sodexo.fi/ruokalistat/output/weekly_html/6095/"+sodexoParams+"/fi";
-restaurants[5].url = "http://www.sodexo.fi/ruokalistat/output/weekly_html/102/"+sodexoParams+"/fi";
 
 var urls = _.map(restaurants, function(r) { return r.url; });
 var i = 0;
-
 casper.start().eachThen(urls, function(url) {
   this.thenOpen(url.data).then(function(res) {
     var selector = restaurants[i].selector;
