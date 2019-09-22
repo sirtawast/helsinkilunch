@@ -1,16 +1,22 @@
 [![Build Status](https://travis-ci.org/sirtawast/pitskulounas.svg?branch=master)](https://travis-ci.org/sirtawast/pitskulounas)
 
-# Pitskulounas
+# Pitsku- ja Vallilalounas
 
-_**PITÄJÄNMÄKI – THE CULINARY EXPERIENCE**_
+_**PITÄJÄNMÄKI AND VALLILA – THE CULINARY EXPERIENCE**_
 
----
 
 Kaikki lempiravintolasi lounaslistat Pitäjänmäeltä.
 
-Very quick hack at the moment.
+Very quick hack. Copy some restaurant menus and paste as HTML for one long list of lunch menus.
 
-[Syömään / Let's eat!](https://sirtawast.github.io/pitskulounas)
+Palvelu pitäisi mergata sisarensa kanssa. https://github.com/sirtawast/helsinkilunch
+
+
+[Syömään Pitskussa / Let's eat @Pitsku!](https://sirtawast.github.io/pitskulounas)
+
+[Syömään Vallilassa / Let's eat @Vallila!](https://sirtawast.github.io/pitskulounas)
+
+---
 
 # How to use
 
