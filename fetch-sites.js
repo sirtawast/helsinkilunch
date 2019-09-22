@@ -4,6 +4,8 @@ var fecha = require('fecha');
 
 var utils = require('./lib/utils');
 var mapping = require('./lib/mapping');
+var map = require('lodash.map');
+
 
 var restaurants = mapping.restaurants;
 var cwd = fs.workingDirectory;
@@ -23,7 +25,7 @@ casper.on('error', function(msg) {
 var sodexoParams = fecha.format(new Date(), "YYYY/MM/DD");
 restaurants[4].url = "http://www.sodexo.fi/ruokalistat/output/weekly_html/6095/"+sodexoParams+"/fi";
 
-var urls = _.map(restaurants, function(r) { return r.url; });
+var urls = map(restaurants, function(r) { return r.url; });
 var i = 0;
 casper.start().eachThen(urls, function(url) {
   this.thenOpen(url.data).then(function(res) {
