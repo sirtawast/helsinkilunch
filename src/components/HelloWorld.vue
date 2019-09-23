@@ -1,15 +1,22 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
-    <div v-for="(r, index) in menus" class="col-12 col-md-6 col-lg-4">
-      <div>
-        <h1>{{ r.name }}</h1>
-        <div v-html="r.html"></div>
+    <header class="row">
+      <div class="col-xs-12">
+        <marquee class="wow"><h1>Pitäjänmäen lounasravintolat</h1></marquee>
       </div>
-    </div>
-  </div>
+    </header>
+    <div><small>Sisältö on noudettu ravintoloiden nettisivuilta automaattisesti. Virheitä sattuu.</small></div>
+    <main class="row">
+      <article v-for="(r, index) in menus" class="col col-12 col-sm-6 col-lg-4">
+        <div class="card">
+          <h3>{{ r.name }}</h3>
+          <div v-html="r.html"></div>
+        </div>
+      </article>
+  </main>
   </div>
 </template>
+
 
 <script>
 export default {
