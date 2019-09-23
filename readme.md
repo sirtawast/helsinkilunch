@@ -27,6 +27,8 @@ Install node >= 8, clone repo.
 ``` bash
 npm install
 
+node vallila.js
+
 npm run crawl
 ```
 
