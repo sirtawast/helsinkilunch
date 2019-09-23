@@ -57,8 +57,13 @@ export default {
       str = get(splitStr,'[1]')? `<p><strong>${days[dayInt]}</strong></p>${splitStr[1]}` : str;
 
       return str.replace(/\d+\.\d+\.?/g, '')
+        .replace(/(\d)\s+€/g, '$1€')
+        .replace(/€([A-Za-z])/g, '€<br>$1')
+        .replace(/\d+\.\d+\.?/g, '')
         .replace(/\s+–\s+/g, '<br>')
         .replace(/\)\s?([A-Z])/g, ')<br>$1')
+        .replace(/\n\n+/g, '<br>')
+        .replace(/\)\s+?([A-Z])/g, ')<br>$1')
         .replace(/\s\s+/g, ' ')
         .replace(/(<br>\n?)+/g, '<br>')
         .replace(/(<br>\s?<br>)+/g, '<br>')
