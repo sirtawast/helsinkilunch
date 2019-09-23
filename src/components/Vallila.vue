@@ -48,7 +48,7 @@ export default {
       });
     },
     sanitizeTxt(str){
-      const dayInt = 1// new Date().getDay();
+      const dayInt = new Date().getDay();
       const days = {1:"Maanantai",2:"Tiistai",3:"Keskiviikko",4:"Torstai",5:"Perjantai",6:"Lauantai"}
 
       const daysRe = new RegExp(days[dayInt], 'i')
