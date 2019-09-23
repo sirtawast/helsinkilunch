@@ -37,9 +37,11 @@ export default {
         process.env.NODE_ENV === 'production'? path = "/pitskulounas/" : "/";
         let i = 0;
         this.$http.get(`${path}static/crawled/${r}.json`).then((res) => {
-          const content2 = this.sanitizeTxt(get(res.data[0], 'content_2', ''))
+          const content = get(res.data, '[0].content', "")
+          const contentHtml = Array.isArray(content)? content.join('<br>') : content;
+
           this.lunchMenus.push({
-            html: `${this.sanitizeTxt(res.data[0].content_1)} ${content2}`, 
+            html: `${this.sanitizeTxt(contentHtml)}`, 
             name: r
           });
         });
