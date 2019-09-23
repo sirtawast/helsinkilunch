@@ -3,18 +3,18 @@ const x = Xray({
   filters: {
     sanitize: (value) => {
       return value
-      .replace(/(maanantai)/i, '<p><strong>Maanantai</strong></p>')
-              .replace(/(tiistai)/i, '<p><strong>Tiistai</strong></p>')
-              .replace(/(keskiviikko)/i, '<p><strong>Keskiviikko</strong></p>')
-              .replace(/(torstai)/i, '<p><strong>Torstai</strong></p>')
-              .replace(/(perjantai)/i, '<p><strong>Perjantai</strong></p>')
-              .replace(/(lauantai)/i, '<p><strong>Lauantai</strong></p>')
-              .replace(/Ma\s/, '<p><strong>Maanantai</strong></p>')
-              .replace(/Ti\s/, '<p><strong>Tiistai</strong></p>')
-              .replace(/Ke\s/, '<p><strong>Keskiviikko</strong></p>')
-              .replace(/To\s/, '<p><strong>Torstai</strong></p>')
-              .replace(/Pe\s/, '<p><strong>Perjantai</strong></p>')
-              .replace(/La\s/, '<p><strong>Lauantai</strong></p>')
+        .replace(/(maanantai)/i, '<p><strong>Maanantai</strong></p>')
+        .replace(/(tiistai)/i, '<p><strong>Tiistai</strong></p>')
+        .replace(/(keskiviikko)/i, '<p><strong>Keskiviikko</strong></p>')
+        .replace(/(torstai)/i, '<p><strong>Torstai</strong></p>')
+        .replace(/(perjantai)/i, '<p><strong>Perjantai</strong></p>')
+        .replace(/(lauantai)/i, '<p><strong>Lauantai</strong></p>')
+        .replace(/Ma\s/, '<p><strong>Maanantai</strong></p>')
+        .replace(/Ti\s/, '<p><strong>Tiistai</strong></p>')
+        .replace(/Ke\s/, '<p><strong>Keskiviikko</strong></p>')
+        .replace(/To\s/, '<p><strong>Torstai</strong></p>')
+        .replace(/Pe\s/, '<p><strong>Perjantai</strong></p>')
+        .replace(/La\s/, '<p><strong>Lauantai</strong></p>')
     },
   }
 })
