@@ -53,25 +53,11 @@ export default {
 
       const daysRe = new RegExp(days[dayInt], 'i')
 
-      str = str.replace(/(maanantai)/i, '<p><strong>Maanantai</strong></p>')
-        .replace(/(tiistai)/i, '<p><strong>Tiistai</strong></p>')
-        .replace(/(keskiviikko)/i, '<p><strong>Keskiviikko</strong></p>')
-        .replace(/(torstai)/i, '<p><strong>Torstai</strong></p>')
-        .replace(/(perjantai)/i, '<p><strong>Perjantai</strong></p>')
-        .replace(/(lauantai)/i, '<p><strong>Lauantai</strong></p>')
-        .replace(/Ma\s/, '<p><strong>Maanantai</strong></p>')
-        .replace(/Ti\s/, '<p><strong>Tiistai</strong></p>')
-        .replace(/Ke\s/, '<p><strong>Keskiviikko</strong></p>')
-        .replace(/To\s/, '<p><strong>Torstai</strong></p>')
-        .replace(/Pe\s/, '<p><strong>Perjantai</strong></p>')
-        .replace(/La\s/, '<p><strong>Lauantai</strong></p>')
-
-      const splitStr = str.split(daysRe);
+      const splitStr = str.split(daysRe); // Split to past and present, get rid of past
       str = get(splitStr,'[1]')? `<p><strong>${days[dayInt]}</strong></p>${splitStr[1]}` : str;
 
       return str.replace(/\d+\.\d+\.?/g, '')
         .replace(/\s+–\s+/g, '<br>')
-        .replace(/\n\n+/g, '<br>')
         .replace(/\)\s?([A-Z])/g, ')<br>$1')
         .replace(/\s\s+/g, ' ')
     }
