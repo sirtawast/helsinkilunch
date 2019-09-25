@@ -1,19 +1,19 @@
 language: node_js
 dist: stretch
-node_js: '6'
+node_js: '12'
 sudo: required
 cache:
   directories:
     - node_modules
 install:
-- sudo apt-get install git screen
-- npm install -g phantomjs-prebuilt
-- npm install
+  - sudo apt-get install git screen
+  - npm install -g phantomjs-prebuilt
+  - npm install
 before_script:
-- npm run crawl
-- node ./vallila.js
+  - npm run crawl
+  - node ./vallila.js
 script:
-- ./bin/test.sh
+  - ./bin/test.sh
 before_deploy:
   - mv static/crawled/ /tmp/crawled/
   - npm run build
@@ -23,7 +23,7 @@ before_deploy:
   - eval `ssh-agent -s`
   - ssh-add /tmp/deploy_key
   - chmod 775 ./bin/deploy.sh
-deploy: 
+deploy:
   skip_cleanup: true
   provider: script
   script: ./bin/deploy.sh

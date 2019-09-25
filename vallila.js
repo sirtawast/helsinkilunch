@@ -15,32 +15,14 @@ const x = Xray({
         .replace(/To\s/, '<p><strong>Torstai</strong></p>')
         .replace(/Pe\s/, '<p><strong>Perjantai</strong></p>')
         .replace(/La\s/, '<p><strong>Lauantai</strong></p>')
-        .replace(
-          /Lounasravintola Hella/,
-          '<p><strong>Lounasravintola Hella</strong></p>',
-        )
-        .replace(
-          /Kauppakahvila Tori/,
-          '<p><strong>Kauppakahvila Tori</strong></p>',
-        )
-        .replace(
-          /Delikahvila Pannu/,
-          '<p><strong>Delikahvila Pannu</strong></p>',
-        )
-        .replace(
-          /Teemaravintola Paja/,
-          '<p><strong>Teemaravintola Paja</strong></p>',
-        )
-        .replace(
-          /Grilliravintola Hiili/,
-          '<p><strong>Grilliravintola Hiili</strong></p>',
-        )
-        .replace(/Edustuslounas/, '<p><strong>Edustuslounas</strong></p>')
-        .replace(/Kahvila Vääksy/, '<p><strong>Kahvila Vääksy</strong></p>')
-        .replace(
-          /Kasvisravintola Kranssi/,
-          '<p><strong>Kasvisravintola Kranssi</strong></p>',
-        );
+        .replace(/(Lounasravintola Hella)/, '<p><strong>$1</strong></p>')
+        .replace(/(Kauppakahvila Tori)/, '<p><strong>$1</strong></p>')
+        .replace(/(Delikahvila Pannu)/, '<p><strong>$1</strong></p>')
+        .replace(/(Teemaravintola Paja)/, '<p><strong>$1</strong></p>')
+        .replace(/(Grilliravintola Hiili)/, '<p><strong>$1</strong></p>')
+        .replace(/(Edustuslounas)/, '<p><strong>$1</strong></p>')
+        .replace(/(Kahvila Vääksy)/, '<p><strong>$1</strong></p>')
+        .replace(/(Kasvisravintola Kranssi)/, '<p><strong>$1</strong></p>');
     },
   },
 });
