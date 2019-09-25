@@ -1,21 +1,27 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Vallila from '@/components/Vallila'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Pitajanmaki from '@/components/Pitajanmaki';
+import Vallila from '@/components/Vallila';
+import Helsinki from '@/components/Helsinki';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Helsinki',
+      component: Helsinki,
+    },
+    {
+      path: '/pitajanmaki',
+      name: 'Pitajanmaki',
+      component: Pitajanmaki,
     },
     {
       path: '/vallila',
       name: 'Vallila',
-      component: Vallila
-    }
-  ]
-})
+      component: Vallila,
+    },
+  ],
+});
