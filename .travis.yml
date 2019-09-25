@@ -1,5 +1,5 @@
 language: node_js
-dist: stretch
+dist: buster
 node_js: '12'
 sudo: required
 cache:
