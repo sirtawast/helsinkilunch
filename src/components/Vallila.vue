@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       lunchMenus: [],
-      restaurants: ['antell-vaaksy', 'africanpots','alice', 'harju8', 'kellohalli', 'rocks', 'rupla', 'sture4'],
+      restaurants: ['antell-galleria', 'africanpots','alice', 'harju8', 'kellohalli', 'rocks', 'rupla', 'sture4'],
     }
   },
   beforeMount(){
