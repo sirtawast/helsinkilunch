@@ -6,7 +6,7 @@ cache:
   directories:
     - node_modules
 install:
-  - sudo apt-get install git screen
+  - sudo apt-get install git
   - npm install
 before_script:
   - mkdir -p static/crawled/
