@@ -7,7 +7,7 @@
     </header>
     <div><small>Sisältö on noudettu ravintoloiden nettisivuilta automaattisesti. Virheitä sattuu.</small></div>
     <main class="row">
-      <article v-for="(r, index) in lunchMenus" class="col col-12 col-sm-6 col-lg-4">
+      <article v-for="(r, index) in orderedLunchMenus" class="col col-12 col-sm-6 col-lg-4">
         <div class="card">
           <h3>{{ r.name }}</h3>
           <div v-html="r.html"></div>
@@ -19,6 +19,8 @@
 
 <script>
 import get from 'lodash.get';
+import orderBy from 'lodash.orderBy';
+
 
 export default {
   data() {
@@ -29,6 +31,11 @@ export default {
   },
   beforeMount(){
     this.fetchData();
+  },
+  computed: {
+    orderedLunchMenus: function () {
+      return orderBy(this.lunchMenus, 'name')
+    },
   },
   methods: {
     fetchData() {
