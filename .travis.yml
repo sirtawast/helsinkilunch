@@ -7,11 +7,9 @@ cache:
     - node_modules
 install:
   - sudo apt-get install git screen
-  - npm install -g phantomjs-prebuilt
   - npm install
 before_script:
   - npm run crawl
-  - node ./vallila.js
 script:
   - ./bin/test.sh
 before_deploy:
