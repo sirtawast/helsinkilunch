@@ -49,6 +49,8 @@
 
 <script>
 import mapping from '../../lib/mapping.js';
+import singles from '../../lib/singles.js';
+
 export default {
   data() {
     return {
@@ -70,7 +72,7 @@ export default {
     },
     newRandomPlace() {
       if (this.availableLunchPlaces.length === 0) {
-        this.availableLunchPlaces = [...this.mapping.fromMenu];
+        this.availableLunchPlaces = [...this.singles.fromMenu];
       }
       const i = this.randomRange(0, this.availableLunchPlaces.length);
       this.randomLunchPlace = this.availableLunchPlaces[i].name;
