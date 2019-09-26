@@ -9,6 +9,7 @@ install:
   - sudo apt-get install git screen
   - npm install
 before_script:
+  - mkdir -p static/crawled/
   - npm run crawl
 script:
   - ./bin/test.sh
