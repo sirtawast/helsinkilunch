@@ -2,40 +2,40 @@
   <div class="container-fluid">
     <header class="row">
       <div class="col-xs-12">
-        <marquee class="wow"><h1>Vallilan lounasravintolat</h1></marquee>
+        <marquee class="wow"><h1>Pitäjänmäen lounasravintolat</h1></marquee>
       </div>
     </header>
-    <div><small>Sisältö on noudettu ravintoloiden nettisivuilta automaattisesti. Virheitä sattuu.</small></div>
+    <div>
+      <small
+        >Sisältö on noudettu ravintoloiden nettisivuilta automaattisesti.
+        Virheitä sattuu.</small
+      >
+    </div>
     <main class="row">
-      <article v-for="(r, index) in orderedLunchMenus" class="col col-12 col-sm-6 col-lg-4">
+      <article v-for="(r, index) in lunchMenus" class="col col-12 col-sm-6 col-lg-4">
         <div class="card">
           <h3>{{ r.name }}</h3>
           <div v-html="r.html"></div>
         </div>
       </article>
-  </main>
+    </main>
   </div>
 </template>
 
 <script>
 import get from 'lodash.get';
 import orderBy from 'lodash.orderBy';
-
+import mapping from '../../lib/mapping.js';
 
 export default {
   data() {
     return {
       lunchMenus: [],
-      restaurants: ['antell-galleria', 'africanpots','alice', 'harju8', 'kellohalli', 'rocks', 'rupla', 'sture4'],
-    }
+      restaurants: mapping.restaurants.pitajanmaki,
+    };
   },
-  beforeMount(){
+  beforeMount() {
     this.fetchData();
-  },
-  computed: {
-    orderedLunchMenus: function () {
-      return orderBy(this.lunchMenus, 'name')
-    },
   },
   methods: {
     fetchData() {
@@ -43,13 +43,13 @@ export default {
         let path = "/";
         process.env.NODE_ENV === 'production'? path = "/pitskulounas/" : "/";
         let i = 0;
-        this.$http.get(`${path}static/crawled/${r}.json`).then((res) => {
+        this.$http.get(`${path}static/crawled/${r.slug}.json`).then((res) => {
           const content = get(res.data, '[0].content', "")
           const contentHtml = Array.isArray(content)? content.join('<br>') : content;
 
           this.lunchMenus.push({
             html: `${this.sanitizeTxt(contentHtml)}`, 
-            name: r
+            name: r.slug
           });
         });
       });
@@ -76,7 +76,25 @@ export default {
         .replace(/(<br>\s?<br>)+/g, '<br>')
         .replace(/(<\/p>\s+?<br>\s+?\n?)/g, '</p>')
     }
-  }
-}
+  },
+};
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h1,
+h2 {
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
