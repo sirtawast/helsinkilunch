@@ -75,10 +75,7 @@ export default {
         .replace(/(<br>\n?)+/g, '<br>')
         .replace(/(<br>\s?<br>)+/g, '<br>')
         .replace(/(<\/p>\s+?<br>\s+?\n?)/g, '</p>')
-
     }
-
-
   }
 }
 </script>

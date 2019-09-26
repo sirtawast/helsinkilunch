@@ -37,4 +37,4 @@ mapping.restaurants.vallila.forEach((r)=>{
       content: r.content,
     },
   ]).write(`${jsonPath}/${r.slug}.json`);
-});
+})

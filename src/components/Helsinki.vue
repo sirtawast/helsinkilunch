@@ -34,7 +34,7 @@
       </div>
       <main class="row">
         <article
-          v-for="(r, index) in menus"
+          v-for="(r, index) in lunchMenus"
           class="col col-12 col-sm-6 col-lg-4"
         >
           <div class="card">
@@ -48,22 +48,25 @@
 </template>
 
 <script>
+import get from 'lodash.get';
+import orderBy from 'lodash.orderBy';
 import mapping from '../../lib/mapping.js';
 import singles from '../../lib/singles.js';
 
 export default {
   data() {
     return {
-      menus: [],
+      places: singles,
+      lunchMenus: [],
       randomLunchPlace: '',
-      mapping: mapping,
+      restaurants: mapping.restaurants.helsinki,
       availableLunchPlaces: [],
       isFirstPick: true,
     };
   },
   beforeMount() {
     this.fetchData();
-    this.newRandomPlace();
+    // this.newRandomPlace();
   },
   methods: {
     onRandomClick() {
@@ -72,7 +75,7 @@ export default {
     },
     newRandomPlace() {
       if (this.availableLunchPlaces.length === 0) {
-        this.availableLunchPlaces = [...this.singles.fromMenu];
+        this.availableLunchPlaces = [...this.places];
       }
       const i = this.randomRange(0, this.availableLunchPlaces.length);
       this.randomLunchPlace = this.availableLunchPlaces[i].name;
@@ -82,18 +85,43 @@ export default {
       return parseInt(Math.random() * (max - min) + min, 10);
     },
     fetchData() {
-      this.mapping.restaurants.forEach(r => {
-        let path = '/';
+      this.restaurants.forEach((r) => {
+        let path = "/";
+        process.env.NODE_ENV === 'production'? path = "/pitskulounas/" : "/";
+        let i = 0;
+        this.$http.get(`${path}static/crawled/${r.slug}.json`).then((res) => {
+          const content = get(res.data, '[0].content', "")
+          const contentHtml = Array.isArray(content)? content.join('<br>') : content;
 
-        if (process.env.NODE_ENV === 'production') {
-          path = '/helsinkilunch/';
-        }
-
-        this.$http.get(`${path}static/crawled/${r.slug}.json`).then(res => {
-          this.menus.push({ html: res.data.html, name: r.slug });
+          this.lunchMenus.push({
+            html: `${this.sanitizeTxt(contentHtml)}`, 
+            name: r.slug
+          });
         });
       });
     },
+    sanitizeTxt(str){
+      const dayInt = new Date().getDay();
+      const days = {1:"Maanantai",2:"Tiistai",3:"Keskiviikko",4:"Torstai",5:"Perjantai",6:"Lauantai"}
+
+      const daysRe = new RegExp(days[dayInt], 'i')
+
+      const splitStr = str.split(daysRe); // Split to past and present, get rid of past
+      str = get(splitStr,'[1]')? `<p><strong>${days[dayInt]}</strong></p>${splitStr[1]}` : str;
+
+      return str.replace(/\d+\.\d+\.?/g, '')
+        .replace(/(\d)\s+€/g, '$1€')
+        .replace(/€([A-Za-z])/g, '€<br>$1')
+        .replace(/\d+\.\d+\.?/g, '')
+        .replace(/\s+–\s+/g, '<br>')
+        .replace(/\)\s?([A-Z])/g, ')<br>$1')
+        .replace(/\n\n+/g, '<br>')
+        .replace(/\)\s+?([A-Z])/g, ')<br>$1')
+        .replace(/\s\s+/g, ' ')
+        .replace(/(<br>\n?)+/g, '<br>')
+        .replace(/(<br>\s?<br>)+/g, '<br>')
+        .replace(/(<\/p>\s+?<br>\s+?\n?)/g, '</p>')
+    }
   },
 };
 
@@ -105,6 +133,7 @@ window.Array.prototype.insert = function(index, item) {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 aside {
+  display: none;
   position: fixed;
   background: #333;
   color: white;
