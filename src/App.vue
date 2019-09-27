@@ -9,7 +9,8 @@
         </ul>
       </nav>
     </header>
-    <router-view />
+
+    <router-view :restaurants="restaurants" />
 
     <footer>
       <hr />
@@ -40,12 +41,19 @@
 </template>
 
 <script>
+import mapping from '../lib/mapping.js';
+
 import Vue from '@/main';
 import styles from './assets/flexbox.css';
 import normalize from './assets/normalize.css';
 
 export default {
   name: 'app',
+  data() {
+    return {
+      restaurants: {...mapping.restaurants},
+    }
+  }
 };
 </script>
 
