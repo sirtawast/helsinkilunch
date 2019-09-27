@@ -24,7 +24,7 @@
 
 <script>
 import get from 'lodash.get';
-import orderBy from 'lodash.orderBy';
+import orderBy from 'lodash.orderby';
 import {sanitizeTxt} from '../utils';
 
 export default {

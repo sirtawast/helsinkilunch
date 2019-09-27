@@ -49,7 +49,7 @@
 
 <script>
 import get from 'lodash.get';
-import orderBy from 'lodash.orderBy';
+import orderBy from 'lodash.orderby';
 import {sanitizeTxt} from '../utils';
 import singles from '../../lib/singles.js';
 
