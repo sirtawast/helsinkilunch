@@ -17,7 +17,8 @@
     "vue": "^2.5.22",
     "vue-resource": "^1.3.6",
     "vue-router": "^3.0.6",
-    "x-ray": "^2.3.4"
+    "x-ray": "^2.3.4",
+    "x-ray-phantom": "^1.0.1"
   },
   "devDependencies": {
     "autoprefixer": "~7.1.2",
