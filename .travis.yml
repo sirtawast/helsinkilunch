@@ -17,7 +17,7 @@ before_deploy:
   - mv static/crawled/ /tmp/crawled/
   - npm run build
   - mv dist/ /tmp/dist/
-  - openssl enc -d -aes-256-cbc -in travis-org-deploy.crypted -out /tmp/deploy_key -k $PRIVATE_KEY_PASSWORD;
+  - openssl enc -d -a -aes-256-cbc -md sha512 -pbkdf2 -in travis-org-deploy.crypted -out /tmp/deploy_key -k $PRIVATE_KEY_PASSWORD;
   - chmod 0600 /tmp/deploy_key
   - eval `ssh-agent -s`
   - ssh-add /tmp/deploy_key
