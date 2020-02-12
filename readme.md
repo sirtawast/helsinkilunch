@@ -1,9 +1,8 @@
-[![Build Status](https://travis-ci.org/sirtawast/pitskulounas.svg?branch=master)](https://travis-ci.org/sirtawast/pitskulounas)
+[![Build Status](https://travis-ci.org/sirtawast/helsinkilunch.svg?branch=master)](https://travis-ci.org/sirtawast/helsinkilunch)
 
 # Pitsku- ja Vallilalounas
 
 _**PITÄJÄNMÄKI AND VALLILA – THE CULINARY EXPERIENCE**_
-
 
 Kaikki lempiravintolasi lounaslistat Pitäjänmäellä ja Vallilassa.
 
@@ -11,10 +10,9 @@ Very quick hack. Copy some restaurant menus and paste as HTML for one long list 
 
 Palvelu pitäisi mergata sisarensa kanssa. https://github.com/sirtawast/helsinkilunch
 
+[Syömään Pitskussa / Let's eat @Pitsku!](https://sirtawast.github.io/helsinkilunch)
 
-[Syömään Pitskussa / Let's eat @Pitsku!](https://sirtawast.github.io/pitskulounas)
-
-[Syömään Vallilassa / Let's eat @Vallila!](https://sirtawast.github.io/pitskulounas/#/vallila)
+[Syömään Vallilassa / Let's eat @Vallila!](https://sirtawast.github.io/helsinkilunch/#/vallila)
 
 ---
 
@@ -24,7 +22,7 @@ Install node >= 8, clone repo.
 
 ## Crawl the sites
 
-``` bash
+```bash
 npm install
 
 node vallila.js
@@ -34,7 +32,7 @@ npm run crawl
 
 ## Build Setup for frontend
 
-``` bash
+```bash
 
 npm install
 

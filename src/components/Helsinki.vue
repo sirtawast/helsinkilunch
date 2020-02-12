@@ -50,7 +50,7 @@
 <script>
 import get from 'lodash.get';
 import orderBy from 'lodash.orderby';
-import {sanitizeTxt} from '../utils';
+import { sanitizeTxt } from '../utils';
 import singles from '../../lib/singles.js';
 
 export default {
@@ -72,7 +72,7 @@ export default {
   computed: {
     orderedLunchMenus: function() {
       return orderBy(this.lunchMenus, 'name');
-    }
+    },
   },
   methods: {
     onRandomClick() {
@@ -91,13 +91,16 @@ export default {
       return parseInt(Math.random() * (max - min) + min, 10);
     },
     fetchData() {
-      this.areaRestaurants.forEach((r) => {
-        const path = process.env.NODE_ENV === 'production'? "/pitskulounas/" : "/";
+      this.areaRestaurants.forEach(r => {
+        const path =
+          process.env.NODE_ENV === 'production' ? '/helsinkilunch/' : '/';
 
-        this.$http.get(`${path}static/crawled/${r.slug}.json`).then((res) => {
-          const content = get(res.data, '[0].content', "")
+        this.$http.get(`${path}static/crawled/${r.slug}.json`).then(res => {
+          const content = get(res.data, '[0].content', '');
           // If content is array, flatten it to string with concat
-          const contentHtml = Array.isArray(content)? content.join('<br>') : content;
+          const contentHtml = Array.isArray(content)
+            ? content.join('<br>')
+            : content;
 
           this.lunchMenus.push({
             name: r.slug,

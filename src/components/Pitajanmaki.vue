@@ -12,7 +12,10 @@
       >
     </div>
     <main class="row">
-      <article v-for="(r, index) in orderedLunchMenus" class="col col-12 col-sm-6 col-lg-4">
+      <article
+        v-for="(r, index) in orderedLunchMenus"
+        class="col col-12 col-sm-6 col-lg-4"
+      >
         <div class="card">
           <h3>{{ r.name }}</h3>
           <div v-html="r.html"></div>
@@ -25,7 +28,7 @@
 <script>
 import get from 'lodash.get';
 import orderBy from 'lodash.orderby';
-import {sanitizeTxt} from '../utils';
+import { sanitizeTxt } from '../utils';
 
 export default {
   props: ['restaurants'],
@@ -41,17 +44,20 @@ export default {
   computed: {
     orderedLunchMenus: function() {
       return orderBy(this.lunchMenus, 'name');
-    }
+    },
   },
   methods: {
     fetchData() {
-      this.areaRestaurants.forEach((r) => {
-        const path = process.env.NODE_ENV === 'production'? "/pitskulounas/" : "/";
+      this.areaRestaurants.forEach(r => {
+        const path =
+          process.env.NODE_ENV === 'production' ? '/helsinkilunch/' : '/';
 
-        this.$http.get(`${path}static/crawled/${r.slug}.json`).then((res) => {
-          const content = get(res.data, '[0].content', "")
+        this.$http.get(`${path}static/crawled/${r.slug}.json`).then(res => {
+          const content = get(res.data, '[0].content', '');
           // If content is array, flatten it to string with concat
-          const contentHtml = Array.isArray(content)? content.join('<br>') : content;
+          const contentHtml = Array.isArray(content)
+            ? content.join('<br>')
+            : content;
 
           this.lunchMenus.push({
             name: r.slug,
@@ -60,16 +66,26 @@ export default {
         });
       });
     },
-    sanitizeTxt(str){
+    sanitizeTxt(str) {
       const dayInt = new Date().getDay();
-      const days = {1:"Maanantai",2:"Tiistai",3:"Keskiviikko",4:"Torstai",5:"Perjantai",6:"Lauantai"}
+      const days = {
+        1: 'Maanantai',
+        2: 'Tiistai',
+        3: 'Keskiviikko',
+        4: 'Torstai',
+        5: 'Perjantai',
+        6: 'Lauantai',
+      };
 
-      const daysRe = new RegExp(days[dayInt], 'i')
+      const daysRe = new RegExp(days[dayInt], 'i');
 
       const splitStr = str.split(daysRe); // Split to past and present, get rid of past
-      str = get(splitStr,'[1]')? `<p><strong>${days[dayInt]}</strong></p>${splitStr[1]}` : str;
+      str = get(splitStr, '[1]')
+        ? `<p><strong>${days[dayInt]}</strong></p>${splitStr[1]}`
+        : str;
 
-      return str.replace(/\d+\.\d+\.?/g, '')
+      return str
+        .replace(/\d+\.\d+\.?/g, '')
         .replace(/(\d)\s+€/g, '$1€')
         .replace(/€([A-Za-z])/g, '€<br>$1')
         .replace(/\d+\.\d+\.?/g, '')
@@ -80,8 +96,8 @@ export default {
         .replace(/\s\s+/g, ' ')
         .replace(/(<br>\n?)+/g, '<br>')
         .replace(/(<br>\s?<br>)+/g, '<br>')
-        .replace(/(<\/p>\s+?<br>\s+?\n?)/g, '</p>')
-    }
+        .replace(/(<\/p>\s+?<br>\s+?\n?)/g, '</p>');
+    },
   },
 };
 </script>
