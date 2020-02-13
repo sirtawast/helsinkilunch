@@ -8,11 +8,7 @@ Kaikki lempiravintolasi lounaslistat keskustassa, Pitäjänmäellä ja Vallilass
 
 Very quick hack. Steal some restaurant lunch menus and paste them as HTML for one long list of delicacy.
 
-[Syömään keskustassa / Let's eat @central hki!](https://sirtawast.github.io/helsinkilunch)
-
-[Syömään Pitskussa / Let's eat @Pitsku!](https://sirtawast.github.io/helsinkilunch)
-
-[Syömään Vallilassa / Let's eat @Vallila!](https://sirtawast.github.io/helsinkilunch/#/vallila)
+[See what's on the menu](https://sirtawast.github.io/helsinkilunch)!
 
 ---
 
